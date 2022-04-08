@@ -25,7 +25,7 @@ public interface BookRepo extends JpaRepository<Book, Long> {
 	List<Book> getByStockGreaterThan(@Param("stock") Long stock);
 	
 	// update stock of all the books that are titled with pattern C
-	
+		
 	@Transactional
 	@Modifying
 	@Query("update Book b set b.stock= b.stock + :newstock where b.title like :pattern")
