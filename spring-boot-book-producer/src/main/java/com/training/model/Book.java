@@ -1,7 +1,13 @@
 package com.training.model;
 
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,9 +21,12 @@ public class Book {
 
 	@Id  //primary key
 	private Long isbn;
+	
+	@Column(name="book_title",length = 100,nullable = false)
 	private String title;
 	private Double price;
 	private Long stock;
+	private LocalDate dop;
 	
 	
 }
