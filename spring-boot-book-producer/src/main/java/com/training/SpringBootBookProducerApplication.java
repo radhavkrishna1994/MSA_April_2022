@@ -27,4 +27,9 @@ public class SpringBootBookProducerApplication {
 		bookRepo.save(new Book(5678l, "Python", 170.50, 100l));
 	}
 
+	
 }
+
+
+
+

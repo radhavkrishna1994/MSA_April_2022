@@ -9,3 +9,5 @@ import com.training.model.Book;
 public interface BookRepo extends JpaRepository<Book, Long> {
 
 }
+
+
