@@ -14,41 +14,56 @@ public class BookService implements BookServiceI {
 
 	@Autowired
 	private BookRepo bookRepo;
-	
+
 	@Override
 	public Book addBook(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return bookRepo.save(book);
 	}
 
 	@Override
 	public List<Book> getBooks() {
-		
+
 		return bookRepo.findAll();
 	}
 
 	@Override
 	public Book getBook(Long isbn) {
-		
+
 		Optional<Book> bookOp = bookRepo.findById(isbn);
 		Book bookFound=null;
 		if(bookOp.isPresent()) {
 			bookFound=bookOp.get();
-		
+
 			return bookFound;}
-		
+
 		return null;
 	}
 
 	@Override
 	public Book deleteBook(Long isbn) {
-		// TODO Auto-generated method stub
+
+		Optional<Book> bookOp = bookRepo.findById(isbn);
+		Book bookFound=null;
+		if(bookOp.isPresent()) {
+			bookFound=bookOp.get();
+			bookRepo.delete(bookFound);
+
+			return bookFound;}
 		return null;
 	}
 
 	@Override
 	public Book updateBookStock(Long isbn, Long newStock) {
-		// TODO Auto-generated method stub
+		Optional<Book> bookOp = bookRepo.findById(isbn);
+		Book bookFound=null;
+		if(bookOp.isPresent()) {
+			bookFound=bookOp.get();
+			bookFound.setStock(bookFound.getStock()+newStock);
+			
+			bookRepo.save(bookFound);
+			return bookFound;
+			}
 		return null;
 	}
 
