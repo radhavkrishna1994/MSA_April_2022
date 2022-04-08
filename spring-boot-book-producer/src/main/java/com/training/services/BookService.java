@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.training.model.Book;
@@ -28,15 +30,15 @@ public class BookService implements BookServiceI {
 	}
 
 	@Override
-	public Book getBook(Long isbn) {
+	public ResponseEntity<Book> getBook(Long isbn) {
 
 		Optional<Book> bookOp = bookRepo.findById(isbn);
 		Book bookFound=null;
 		if(bookOp.isPresent()) {
 			bookFound=bookOp.get();
 
-			return bookFound;}
-
+			return new ResponseEntity(bookFound,HttpStatus.OK);
+		}
 		return null;
 	}
 
