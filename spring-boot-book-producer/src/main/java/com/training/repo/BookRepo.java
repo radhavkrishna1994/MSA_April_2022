@@ -1,5 +1,6 @@
 package com.training.repo;
 
+import java.lang.annotation.Native;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -20,6 +21,7 @@ public interface BookRepo extends JpaRepository<Book, Long> {
 	List<Book> findByTitleLike(String title);
 	
 	// stock > 100
+	
 	
 	@Query("from Book b where b.stock > :stock")
 	List<Book> getByStockGreaterThan(@Param("stock") Long stock);
