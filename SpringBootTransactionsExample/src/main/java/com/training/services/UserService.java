@@ -22,10 +22,10 @@ public class UserService {
 	@Autowired
 	private NotificationService notificationService;
 	
-	@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_UNCOMMITTED)
+	//@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.READ_UNCOMMITTED)
 	public void addUser(User user,Notification not) 
 	{
-		//notificationService=null;
+		notificationService=null;
 		userRepo.save(user);
 		notificationService.addNotification(not);
 			
