@@ -2,8 +2,9 @@ package com.training.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.training.model.Account;
 import com.training.model.Customer;
 
-public interface AccountRepo extends JpaRepository<Customer, Long> {
+public interface AccountRepo extends JpaRepository<Account, Long> {
 
 }
