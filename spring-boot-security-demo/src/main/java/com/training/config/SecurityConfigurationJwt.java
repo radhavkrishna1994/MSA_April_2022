@@ -3,6 +3,7 @@ package com.training.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -11,9 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.training.services.MyUserDetailsService;
 
-//@Configuration
-//@EnableWebSecurity
-public class SecurityConfigurationDb extends WebSecurityConfigurerAdapter {
+@Configuration
+@EnableWebSecurity
+public class SecurityConfigurationJwt extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public PasswordEncoder myPasswordEncoder()
@@ -28,8 +29,10 @@ public class SecurityConfigurationDb extends WebSecurityConfigurerAdapter {
 
 			@Override
 			public boolean matches(CharSequence rawPassword, String encodedPassword) {
-				
-				return rawPassword.equals(encodedPassword);
+				System.out.println(rawPassword+" "+encodedPassword);
+				if(rawPassword.equals(encodedPassword))
+					return true;
+				return false;
 			}
 			
 		};
@@ -50,14 +53,22 @@ public class SecurityConfigurationDb extends WebSecurityConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception
 	{
 			http
+			.csrf()
+			.disable()
 			.authorizeRequests()
+			.antMatchers("/authenticate")
+			.permitAll()
 			.antMatchers("/user/**")
 		//	.hasRole("USER")
 			.hasAnyRole("USER","ADMIN")
 			.antMatchers("/admin")
 			.hasRole("ADMIN")
-			.and()
-			.formLogin();
+			.anyRequest()
+			.authenticated();
 			
+	}
+	@Bean
+	public AuthenticationManager authManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 }
