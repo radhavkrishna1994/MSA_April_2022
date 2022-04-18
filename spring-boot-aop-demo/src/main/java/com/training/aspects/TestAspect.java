@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -45,8 +46,17 @@ public class TestAspect {
 			e.printStackTrace();
 		}
 		
-		log.info("Back to Aspect");
+		log.info("Back to Around Aspect");
 		return value;
+		
+	}
+	
+	@AfterReturning(value="execution(* com.training.services.AOPService.get*(..))")
+	public void logAfter(JoinPoint joinPoint)
+	{
+		log.info("This is after aspect");
+		
+		
 		
 	}
 	
