@@ -17,7 +17,7 @@ import com.training.model.Customer;
 import com.training.repo.AccountRepo;
 import com.training.repo.CustomerRepo;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringBootBankDemo {
 
 	public static void main(String[] args) {

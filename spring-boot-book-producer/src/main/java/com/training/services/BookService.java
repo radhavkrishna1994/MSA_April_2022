@@ -68,5 +68,11 @@ public class BookService implements BookServiceI {
 			}
 		return null;
 	}
+	
+	
+	public String sayHello()
+	{
+		return "hello";
+	}
 
 }

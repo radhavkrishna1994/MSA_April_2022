@@ -17,5 +17,7 @@ public interface BookServiceI {
 	
 	//update the stock
 	public Book updateBookStock(Long isbn,Long newStock);
+	
+	public String sayHello();
 
 }
