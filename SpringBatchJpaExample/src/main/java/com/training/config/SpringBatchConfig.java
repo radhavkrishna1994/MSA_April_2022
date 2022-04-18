@@ -62,7 +62,7 @@ public class SpringBatchConfig {
     }
 
     @Bean
-    public LineMapper<User> lineMapper() {
+    public LineMapper<User> lineMapper() {   
 
     	log.info("In Line Mapper....");
         DefaultLineMapper<User> defaultLineMapper = new DefaultLineMapper<>();
