@@ -16,11 +16,11 @@ public class SpringBatchJpaExampleApplication {
 		SpringApplication.run(SpringBatchJpaExampleApplication.class, args);
 	}
 
-	/*
-	 * @Autowired private Scheduler sch;
-	 * 
-	 * @Bean CommandLineRunner getRunner(ApplicationContext ctx) { return args->{
-	 * 
-	 * sch.cronJobSch(); }; }
-	 */
+	
+	  @Autowired private Scheduler sch;
+	  
+	  @Bean CommandLineRunner getRunner(ApplicationContext ctx) { return args->{
+	  
+	  sch.cronJobSch(); }; }
+	 
 }
