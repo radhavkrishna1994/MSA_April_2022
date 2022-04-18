@@ -42,6 +42,11 @@ public class KafkaService {
 
 			@Override
 			public void onFailure(Throwable ex) {
+				
+				/*
+				 * try { Thread.sleep(50000); } catch (InterruptedException e) { // TODO
+				 * Auto-generated catch block e.printStackTrace(); }
+				 */
 			System.out.println("Exception :"+ex.getMessage());
 			
 			}
