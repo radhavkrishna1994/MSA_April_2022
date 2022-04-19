@@ -27,10 +27,10 @@ public class SpringBootBookProducerApplication{// implements CommandLineRunner{
 	@PostConstruct
 	public void saveBooks()
 	{
-		bookRepo.save(new Book(1234l, "C", 120.50, 100l,LocalDate.now()));
-		bookRepo.save(new Book(3456l, "CPlus", 150.50, 150l,LocalDate.now()));
-		bookRepo.save(new Book(5678l, "Python", 170.50, 120l,LocalDate.now()));
-		bookRepo.save(new Book(5674l, "C", 45.50, 100l,LocalDate.now()));
+		bookRepo.save(new Book(1234l, "C", 120.50, 100l));
+		bookRepo.save(new Book(3456l, "CPlus", 150.50, 150l));
+		bookRepo.save(new Book(5678l, "Python", 170.50, 120l));
+		bookRepo.save(new Book(5674l, "C", 45.50, 100l));
 	}
 	
 	//CommandLineRunner

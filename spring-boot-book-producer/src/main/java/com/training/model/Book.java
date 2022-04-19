@@ -26,7 +26,7 @@ public class Book {
 	private String title;
 	private Double price;
 	private Long stock;
-	private LocalDate dop;
+//	private LocalDate dop;
 	
 	
 }
