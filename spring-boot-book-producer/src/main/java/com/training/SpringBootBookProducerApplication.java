@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.training.model.Book;
 import com.training.repo.BookRepo;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class SpringBootBookProducerApplication{// implements CommandLineRunner{
 
@@ -42,7 +44,7 @@ public class SpringBootBookProducerApplication{// implements CommandLineRunner{
 			//System.out.println(bookRepo.findByTitleLike("%C%"));
 			//System.out.println(bookRepo.getByStockGreaterThan(100l));
 			
-			System.out.println(bookRepo.updateStockTitle("%C%", 25l));
+			//System.out.println(bookRepo.updateStockTitle("%C%", 25l));
 		};
 	}
 
