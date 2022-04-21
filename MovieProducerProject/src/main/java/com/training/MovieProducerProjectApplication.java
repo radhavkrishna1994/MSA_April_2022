@@ -26,10 +26,19 @@ public class MovieProducerProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MovieProducerProjectApplication.class, args);
 	}
-	/*
-	 * @PostConstruct public void init() { Movie m1=new Movie(); m1.setTitle("abc");
-	 * m1.setGenre("thriller"); repo.save(m1); }
-	 */
+	
+	  @PostConstruct
+	  public void init() { 
+		  
+		  repo.save(new Movie(1234l, "Bhag Milka Bhag", "Biopic"));
+		  repo.save(new Movie(3456l, "abc", "Biopic"));
+		  repo.save(new Movie(8654l, "xyz", "Thriller"));
+		  repo.save(new Movie(6234l, "pqrs", "feelGood"));
+		  repo.save(new Movie(321l, "xxxxxx", "Thriller"));
+		  repo.save(new Movie(785l, "yyyyyyy", "Thriller"));
+	  
+	  }
+	 
 	
 	@Bean
 	public CommandLineRunner getRunner(ApplicationContext ctx)
