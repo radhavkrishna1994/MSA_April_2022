@@ -9,13 +9,13 @@ spring:
         uri: lb://service1
         predicates:
         - Path=/helloservice1/**
-        filters:
-        - MyCustomFilter
+#        filters:
+#        - MyCustomFilter
       - id: service2
         #uri: http://localhost:8081/
         uri: lb://service2
         predicates:
         - Path=/helloservice2/**  
           
-        filters:
-        - MyCustomFilter  
+#        filters:
+#        - MyCustomFilter  

@@ -3,9 +3,12 @@ package com.training;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
+
+import reactor.core.publisher.Mono;
 
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -28,5 +31,17 @@ public class SpringBootGatewayServiceApplication {
 	 * 
 	 * }
 	 */
+	
+	@Bean
+	public GlobalFilter globalFilter() {
+		
+		return (exchange,chain)->{
+			System.out.println("First Global Filter");
+			return chain.filter(exchange).then(Mono.fromRunnable(()->{
+				
+				System.out.println("First Post Global Filter");
+			}));
+		};
+	}
 
 }
