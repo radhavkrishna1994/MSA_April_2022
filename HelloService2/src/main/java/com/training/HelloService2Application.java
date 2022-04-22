@@ -19,8 +19,8 @@ public class HelloService2Application {
 	}
 
 	@GetMapping("/hello2")
-	public String sayHello(@RequestHeader("Authorization") String requestHeaderValue)
+	public String sayHello(/* @RequestHeader("Authorization") String requestHeaderValue */)
 	{
-		return "hello2 - service"+requestHeaderValue;
+		return "hello2 - service";//+requestHeaderValue;
 	}
 }
