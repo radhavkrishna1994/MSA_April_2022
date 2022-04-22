@@ -1,0 +1,6 @@
+spring.cloud.stream:
+  function:
+    definition: moviePublisher
+  bindings:
+    movieProcessor-out-0:
+      destination: moviedomainsnew
