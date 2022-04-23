@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.training.config.OrderConfiguration;
 import com.training.model.OrderedBook;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @Service
 public class OrderService {
@@ -20,6 +23,7 @@ public class OrderService {
 	private OrderConfiguration config;
 	
 	//private String producerUrl = "http://localhost:8081/bookstore/api/book/isbn/{isbn}";
+	
 	
 	public OrderedBook createOrder(Long isbn,int quantity)
 	{
@@ -33,5 +37,6 @@ public class OrderService {
 		return orderedBook;
 		
 	}
+	
 
 }

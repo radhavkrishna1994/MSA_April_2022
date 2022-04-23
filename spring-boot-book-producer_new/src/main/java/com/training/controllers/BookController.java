@@ -42,7 +42,7 @@ public class BookController {
 	public Book getBook(@PathVariable("isbn") Long isbn)
 	{
 		Book book = bookService.getBook(isbn);
-		book.setPort(port);
+	//	book.setPort(port);
 		return book;
 	}
 

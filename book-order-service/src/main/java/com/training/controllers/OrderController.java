@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.training.model.OrderedBook;
 import com.training.services.OrderService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @RequestMapping("/orders")
 @RestController
 public class OrderController {
@@ -16,10 +18,16 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
+	@CircuitBreaker(fallbackMethod = "getDefault", name = "fallbackmethod")
 	@GetMapping("/isbn/{isbn}/qty/{qty}")
 	public OrderedBook createOrder(@PathVariable("isbn") Long isbn,@PathVariable("qty") int quantity)
 	{
 		return orderService.createOrder(isbn, quantity);
 	}
 
+
+	public OrderedBook defaultFallBack(long isbn,int qty,Throwable e)
+	{
+		return new OrderedBook();
+	}
 }
