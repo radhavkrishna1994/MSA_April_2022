@@ -14,7 +14,7 @@ import com.training.model.Order;
 @Service
 public class KafkaService {
 
-	private static final String TOPIC = "kafka_topic";
+	private static final String TOPIC = "my-kafka-topic-new";
 	
 	private static final String TOPIC1 = "kafka_topic1";
 	@Autowired

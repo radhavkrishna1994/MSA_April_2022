@@ -70,11 +70,14 @@ public class SecurityController {
 
 	@GetMapping("/all")
 	public String testAll() {
+		//code
 		return testService.getServiceAll();
 	}
 	
+	
 	@GetMapping("/service1")
 	public MyUser testService() {
+		//code
 		return testService.getService1();
 	}
 
